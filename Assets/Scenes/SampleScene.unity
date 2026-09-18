@@ -1155,7 +1155,7 @@ Transform:
   m_GameObject: {fileID: 1084135714}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0.5, z: 5}
+  m_LocalPosition: {x: 5, y: 0.5, z: 3.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1304,6 +1304,8 @@ GameObject:
   - component: {fileID: 1282188091}
   - component: {fileID: 1282188090}
   - component: {fileID: 1282188089}
+  - component: {fileID: 1282188096}
+  - component: {fileID: 1282188097}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -1471,6 +1473,39 @@ Transform:
   - {fileID: 729162602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282188096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282188088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c31894f7e676fd40ad74814035f9d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackRule
+  playerTransform: {fileID: 1084135718}
+  attackRange: 5
+--- !u!114 &1282188097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282188088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f968fe8259c26048a03a1c55a36bee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PriorityRuleEvaluator
+  playerTransform: {fileID: 1084135718}
+  currentHealth: 100
+  maxHealth: 100
+  attackRange: 5
+  chaseRange: 15
+  lowHealthThreshold: 0.2
+  currentAction: 0
 --- !u!1 &1400586515
 GameObject:
   m_ObjectHideFlags: 0
