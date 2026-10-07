@@ -26,16 +26,41 @@ public class AvoidanceSensor : MonoBehaviour
 
     private void Awake()
     {
-        // TODO: Get the AgentContext component.
+        context = GetComponent<AgentContext>();
     }
 
     private void Update()
     {
-        // TODO: Calculate the sensor origin and forward direction.
-        // TODO: Draw the runtime debug ray.
-        // TODO: Raycast for hazards first.
-        // TODO: Store IsAvoiding and AvoidanceDirection.
-        // TODO: Extend the check to include obstacles.
+        //Calculate the sensor origin and forward direction.
+        Vector3 sensorOrigin = transform.position + Vector3.up * sensorHeight;
+        Vector3 sensorForward = transform.forward;
+
+        // Draw the runtime debug ray.
+        Debug.DrawRay(sensorOrigin, sensorForward * detectionDistance, Color.red);
+
+        // Raycast for hazards first.
+        bool hasHit = Physics.Raycast(
+            sensorOrigin,
+            sensorForward,
+            out RaycastHit hit,
+            detectionDistance);
+
+        // Store IsAvoiding and AvoidanceDirection.
+        if(!hasHit)
+        {
+            context.IsAvoiding = false;
+            context.AvoidanceDirection = Vector3.zero;
+            return;
+        }
+        DetectionSource source = hit.collider.GetComponent<DetectionSource>();
+        if (!ShouldAvoid(source))
+        {
+            context.IsAvoiding = false;
+            context.AvoidanceDirection = Vector3.zero;
+            return;
+        }
+        context.IsAvoiding = true;
+        context.AvoidanceDirection = transform.right;
     }
 
     private void OnDrawGizmos()
@@ -53,11 +78,14 @@ public class AvoidanceSensor : MonoBehaviour
     /// </summary>
     /// <param name="source">The source detected by the forward ray.</param>
     /// <returns>True when the source is a hazard or obstacle.</returns>
-    private bool ShouldAvoid(
-        DetectionSource source)
+    private bool ShouldAvoid(DetectionSource source)
     {
-        // TODO: Begin with hazards, then extend to obstacles.
-        return false;
+        // Begin with hazards, then extend to obstacles.
+        if (source == null)
+        {
+            return false;
+        }
+        return source.Type == DetectionType.Hazard;
     }
 
     #endregion

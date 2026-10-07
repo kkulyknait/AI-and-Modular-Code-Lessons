@@ -12,6 +12,9 @@ public class SimpleAgentController : MonoBehaviour
     [SerializeField]
     private float stopDistance = 0.75f;
 
+    [SerializeField]
+    private float turnSpeed = 5f;
+
     #endregion
 
     #region Private Variables
@@ -31,7 +34,8 @@ public class SimpleAgentController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         rigidBody.useGravity = false;
-        rigidBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        rigidBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX |
+            RigidbodyConstraints.FreezeRotationZ;
     }
 
     private void FixedUpdate()
@@ -47,11 +51,11 @@ public class SimpleAgentController : MonoBehaviour
 
         direction.y = 0f;
 
-        if (direction.magnitude <= stopDistance)
+        if (!context.IsAvoiding && direction.magnitude <= stopDistance)
         {
             return;
         }
-
+        //  This is where I left off last class
         Vector3 nextPosition = rigidBody.position + direction.normalized * moveSpeed * Time.fixedDeltaTime;
 
         rigidBody.MovePosition(nextPosition);

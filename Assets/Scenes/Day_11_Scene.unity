@@ -710,13 +710,13 @@ PrefabInstance:
       addedObject: {fileID: 911908908}
     - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 911908909}
-    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 911908911}
     - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 911908910}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 911908912}
   m_SourcePrefab: {fileID: 100100000, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
 --- !u!1 &262437047 stripped
 GameObject:
@@ -2276,8 +2276,10 @@ MonoBehaviour:
   IsNearObstacle: 0
   IsNearHazard: 0
   IsNearTarget: 0
+  IsAvoiding: 0
   CurrentTarget: {fileID: 212324185}
   CurrentDetection: 0
+  AvoidanceDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &911908908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2291,25 +2293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanController
   moveSpeed: 5
---- !u!114 &911908909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911908902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa60d4b86e25d845ba3b871aa7fb62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Complete_AgentContext
-  IsNearObstacle: 0
-  IsNearHazard: 0
-  IsNearTarget: 0
-  CurrentTarget: {fileID: 0}
-  CurrentDetection: 0
-  IsAvoiding: 0
-  AvoidanceDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &911908910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,6 +2307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleAgentController
   moveSpeed: 3
   stopDistance: 0.75
+  turnSpeed: 5
 --- !u!54 &911908911
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2351,6 +2335,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &911908912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911908902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f83ce9afee1dce419b9580ab933283b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AvoidanceSensor
+  detectionDistance: 2
+  sensorHeight: 0.5
+  avoidanceDistance: 1.5
 --- !u!1001 &916604620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2373,7 +2372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8686158076579762381, guid: 87cc317aedff5474dae14594cc8a663d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 8686158076579762381, guid: 87cc317aedff5474dae14594cc8a663d, type: 3}
       propertyPath: m_LocalRotation.w

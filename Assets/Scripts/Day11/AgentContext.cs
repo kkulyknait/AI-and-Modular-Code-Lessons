@@ -10,9 +10,13 @@ public class AgentContext : MonoBehaviour
 
     public bool IsNearTarget;
 
+    public bool IsAvoiding;
+
     public GameObject CurrentTarget;
 
     public DetectionType CurrentDetection;
+
+    public Vector3 AvoidanceDirection;
 
     #endregion
 
@@ -33,8 +37,9 @@ public class AgentContext : MonoBehaviour
             $"Is Near Obstacle: {IsNearObstacle} | " +
             $"Is Near Hazard: {IsNearHazard} | " +
             $"Is Near Target: {IsNearTarget} | " +
-            $"Current Target: {targetName}",
-            this);
+            $"Is Avoiding: {IsAvoiding} | " + 
+            $"Avoidance Direction: {AvoidanceDirection} | " +
+            $"Current Target: {targetName}", this);
     }
 
     #endregion
