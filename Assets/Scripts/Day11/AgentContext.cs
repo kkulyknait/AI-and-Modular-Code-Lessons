@@ -12,11 +12,16 @@ public class AgentContext : MonoBehaviour
 
     public bool IsAvoiding;
 
+    public bool IsThreatDetected;
+
     public GameObject CurrentTarget;
 
     public DetectionType CurrentDetection;
 
     public Vector3 AvoidanceDirection;
+    
+    public Vector3 ThreatDirection;
+    public float ThreatDistance;
 
     #endregion
 

@@ -65,8 +65,19 @@ public class AvoidanceSensor : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // TODO: Draw the red detection ray.
-        // TODO: Draw the green avoidance direction while avoiding.
+        Vector3 sensorOrigin = transform.position + Vector3.up * sensorHeight;
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(sensorOrigin, sensorOrigin + transform.forward * detectionDistance);
+
+        AgentContext agentContext = GetComponent<AgentContext>();
+        if (agentContext == null || !agentContext.IsAvoiding)
+        {
+            return;
+        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + agentContext.AvoidanceDirection.normalized
+            * avoidanceDistance);
+
     }
 
     #endregion
@@ -85,7 +96,7 @@ public class AvoidanceSensor : MonoBehaviour
         {
             return false;
         }
-        return source.Type == DetectionType.Hazard;
+        return source.Type == DetectionType.Hazard  || source.Type == DetectionType.Obstacle;
     }
 
     #endregion
