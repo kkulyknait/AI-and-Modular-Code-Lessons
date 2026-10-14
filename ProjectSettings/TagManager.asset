@@ -5,18 +5,22 @@ TagManager:
   serializedVersion: 3
   tags:
   - Hazard
+  - AIAgent
+  - Key
+  - Powerup
+  - Chest
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Agent
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Pickup
+  - Target
+  - Hazard
+  - Obstacle
+  - Ground
   - 
   - 
   - 

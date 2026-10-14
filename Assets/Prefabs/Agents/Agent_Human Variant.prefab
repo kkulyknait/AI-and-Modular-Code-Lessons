@@ -1,0 +1,281 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1772349512934066026
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_Name
+      value: Agent_Human Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964253199806416229, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5785154160444556478}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7625427789301152260}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5082540535517343211}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3933068887436075612}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1779216225974999795}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 709412365630948332}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2652596072821072442}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3944534584011244758}
+    - targetCorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5187902926106808718}
+  m_SourcePrefab: {fileID: 100100000, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+--- !u!1 &9031336591935609013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7335632317660700639, guid: 33e03ab582a13004fbe6eddc8991494f, type: 3}
+  m_PrefabInstance: {fileID: 1772349512934066026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5785154160444556478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ef32b92031a849939503c1b986904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AgentContext
+  IsNearObstacle: 0
+  IsNearHazard: 0
+  IsNearTarget: 0
+  IsAvoiding: 0
+  IsThreatDetected: 0
+  CurrentTarget: {fileID: 0}
+  CurrentDetection: 0
+  AvoidanceDirection: {x: 0, y: 0, z: 0}
+  ThreatDirection: {x: 0, y: 0, z: 0}
+  ThreatDistance: 0
+--- !u!114 &7625427789301152260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d1f8ded8627a3428cb9b209e1096a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectionAgent
+--- !u!143 &5082540535517343211
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Height: 0.8
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!114 &3933068887436075612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 1244dd0be1a50c64d98023d6faff3ca7, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1779216225974999795}
+        m_TargetAssemblyTypeName: HumanController, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8ca1d238-27e1-47d2-a3d3-907d4a4c305c
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1779216225974999795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67875e75ede1c0147af3d2ca13896d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanController
+  moveSpeed: 5
+--- !u!54 &709412365630948332
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!114 &2652596072821072442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2d003fc8260bc45bcffcbfa9f180d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleAgentController
+  moveSpeed: 3
+  stopDistance: 0.75
+  turnSpeed: 5
+  threatResponse: 0
+--- !u!114 &3944534584011244758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f83ce9afee1dce419b9580ab933283b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AvoidanceSensor
+  detectionDistance: 2
+  sensorHeight: 0.5
+  avoidanceDistance: 1.5
+--- !u!114 &5187902926106808718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031336591935609013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa95fdbd9c95b24c92ad2c083034c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThreatDetector
+  threat: {fileID: 0}
+  detectionRadius: 5

@@ -31,53 +31,61 @@ public class AvoidanceSensor : MonoBehaviour
 
     private void Update()
     {
-        //Calculate the sensor origin and forward direction.
+        // TODO: Calculate the sensor origin and forward direction.
         Vector3 sensorOrigin = transform.position + Vector3.up * sensorHeight;
-        Vector3 sensorForward = transform.forward;
+        Vector3 sensorDirection = transform.forward;
 
-        // Draw the runtime debug ray.
-        Debug.DrawRay(sensorOrigin, sensorForward * detectionDistance, Color.red);
+        // TODO: Draw the runtime debug ray.
+        Debug.DrawRay(sensorOrigin, sensorDirection * detectionDistance, Color.red);
 
-        // Raycast for hazards first.
-        bool hasHit = Physics.Raycast(
-            sensorOrigin,
-            sensorForward,
-            out RaycastHit hit,
-            detectionDistance);
+        // TODO: Raycast for hazards first.
+        bool hasHit = Physics.Raycast(sensorOrigin, sensorDirection, out RaycastHit hitInfo, detectionDistance);
 
-        // Store IsAvoiding and AvoidanceDirection.
-        if(!hasHit)
+        // TODO: Store IsAvoiding and AvoidanceDirection.
+        if (!hasHit)
         {
             context.IsAvoiding = false;
             context.AvoidanceDirection = Vector3.zero;
+
             return;
         }
-        DetectionSource source = hit.collider.GetComponent<DetectionSource>();
+
+        DetectionSource source = hitInfo.collider.GetComponent<DetectionSource>();
+        
         if (!ShouldAvoid(source))
         {
             context.IsAvoiding = false;
             context.AvoidanceDirection = Vector3.zero;
+            
             return;
         }
-        context.IsAvoiding = true;
-        context.AvoidanceDirection = transform.right;
-    }
 
+        context.IsAvoiding = true;
+
+        //We're arbitrarily choosing to avoid to the right, but you could implement a more complex avoidance strategy here.
+        context.AvoidanceDirection = transform.right;
+
+        // TODO: Extend the check to include obstacles.
+    }
     private void OnDrawGizmos()
     {
+        // TODO: Draw the red detection ray.
         Vector3 sensorOrigin = transform.position + Vector3.up * sensorHeight;
+
         Gizmos.color = Color.red;
         Gizmos.DrawLine(sensorOrigin, sensorOrigin + transform.forward * detectionDistance);
 
-        AgentContext agentContext = GetComponent<AgentContext>();
-        if (agentContext == null || !agentContext.IsAvoiding)
+        // TODO: Draw the green avoidance direction while avoiding.
+        if (context == null || !context.IsAvoiding)
         {
             return;
         }
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + agentContext.AvoidanceDirection.normalized
-            * avoidanceDistance);
 
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position,
+                        transform.position +
+                        context.AvoidanceDirection.normalized *
+                        avoidanceDistance);
     }
 
     #endregion
@@ -91,12 +99,13 @@ public class AvoidanceSensor : MonoBehaviour
     /// <returns>True when the source is a hazard or obstacle.</returns>
     private bool ShouldAvoid(DetectionSource source)
     {
-        // Begin with hazards, then extend to obstacles.
+        // TODO: Begin with hazards, then extend to obstacles.
         if (source == null)
         {
             return false;
         }
-        return source.Type == DetectionType.Hazard  || source.Type == DetectionType.Obstacle;
+
+        return source.Type == DetectionType.Hazard || source.Type == DetectionType.Obstacle;
     }
 
     #endregion

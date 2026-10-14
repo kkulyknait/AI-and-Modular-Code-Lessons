@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AgentContext : MonoBehaviour
 {
@@ -21,7 +22,15 @@ public class AgentContext : MonoBehaviour
     public Vector3 AvoidanceDirection;
     
     public Vector3 ThreatDirection;
+
     public float ThreatDistance;
+
+    public List<Transform> PerceivedObjects = new List<Transform>();
+
+    public Transform PerceivedAgent;
+    public Transform PerceivedPickup;
+    public Transform PerceivedTarget;
+    public Transform PerceivedHazard;
 
     #endregion
 
@@ -46,6 +55,43 @@ public class AgentContext : MonoBehaviour
             $"Avoidance Direction: {AvoidanceDirection} | " +
             $"Current Target: {targetName}", this);
     }
+    //  Clear the current perception results
+    public void ClearPerception()
+    {
+        PerceivedObjects.Clear();
+        PerceivedAgent = null;
+        PerceivedPickup = null;
+        PerceivedTarget = null;
+        PerceivedHazard = null;
+    }
+
+    public void AddPerceivedObject(Transform perceived)
+    {
+        if (PerceivedObjects.Contains(perceived))
+        {
+            return;
+        }
+
+        PerceivedObjects.Add(perceived);
+
+        if (perceived.CompareTag("Player") || perceived.CompareTag("AIAgent"))
+        {
+            PerceivedAgent = perceived;
+        }
+        else if (perceived.CompareTag("Key") || perceived.CompareTag("Powerup"))
+        {
+            PerceivedPickup = perceived;
+        }
+        else if (perceived.CompareTag("Chest"))
+        {
+            PerceivedTarget = perceived;
+        }
+        else if (perceived.CompareTag("Hazard"))
+        {
+            PerceivedHazard = perceived;
+        }
+    }
+
 
     #endregion
 }
