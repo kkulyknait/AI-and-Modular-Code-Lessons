@@ -2314,6 +2314,7 @@ MonoBehaviour:
   moveSpeed: 3
   stopDistance: 0.75
   turnSpeed: 5
+  threatResponse: 0
 --- !u!54 &911908911
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3422,7 +3423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f79b3cc147a7be49a1d8d13a589485f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectionSource
-  detectionType: 1
+  detectionType: 0
 --- !u!4 &1344361215 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8546401210822808660, guid: e26680100d6796846a542900d91354a0, type: 3}
