@@ -43,10 +43,13 @@ public class SimpleAgentController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rigidBody.linearVelocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
+
         Vector3 movementDirection = SelectMovementDirection();
         movementDirection.y = 0f;
 
-        if(movementDirection.sqrMagnitude < 0f)
+        if (movementDirection.sqrMagnitude <= 0f)
         {
             return;
         }
@@ -57,16 +60,22 @@ public class SimpleAgentController : MonoBehaviour
         Quaternion nextRotation = Quaternion.Slerp(rigidBody.rotation, targetRotation, 
             turnSpeed * Time.fixedDeltaTime);
 
-        Vector3 nextPosition = rigidBody.position + movementDirection * 
-            moveSpeed * Time.fixedDeltaTime;
-        
         rigidBody.MoveRotation(nextRotation);
-        rigidBody.MovePosition(nextPosition);
+        rigidBody.linearVelocity = movementDirection * moveSpeed;
 
     }
 
     private Vector3 SelectMovementDirection()
     { 
+        if (context.CurrentTarget != null)
+        {
+            Vector3 toGoal = context.CurrentTarget.transform.position - rigidBody.position;
+            toGoal.y = 0f;
+            if (toGoal.magnitude <= stopDistance)
+            {
+                return Vector3.zero;
+            }
+        }
         if (context.IsAvoiding)
         {
             return context.AvoidanceDirection.normalized;
