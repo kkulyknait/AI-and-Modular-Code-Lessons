@@ -31,20 +31,71 @@ public abstract class AgentResponseController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        // TODO: Get AgentContext and Rigidbody, then configure top-down movement.
+        context = GetComponent<AgentContext>();
+        rigidBody = GetComponent<Rigidbody>();
+
+        rigidBody.useGravity = false;
+        rigidBody.constraints =
+            RigidbodyConstraints.FreezePositionY |
+            RigidbodyConstraints.FreezePositionX |
+            RigidbodyConstraints.FreezePositionZ;
+
     }
+
 
     private void FixedUpdate()
     {
-        // TODO: Clear the prior response target before evaluating this frame.
-        // TODO: Get the contextual response direction.
-        // TODO: Use the avoidance direction while IsAvoiding is true.
-        // TODO: Rotate and move with the Rigidbody.
+        rigidBody.linearVelocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
+
+        context.ResponseTarget = null;
+        context.HasResponseTarget = false;
+
+        Vector3 responseDirection = GetResponseDirection();
+
+        //  If IsAvoiding is true, use AvoidanceDirection
+        //  Otherwise, use responseDirection
+
+        Vector3 movementDirection =
+            context.IsAvoiding ? context.AvoidanceDirection : responseDirection;
+
+        movementDirection.y = 0f;
+
+        if (movementDirection.sqrMagnitude <= 0f)
+        {
+            return;
+        }
+        if (!context.IsAvoiding && context.ResponseTarget != null)
+        {
+            Vector3 toTarget = context.ResponseTarget.position - rigidBody.position;
+            toTarget.y = 0f;
+
+            if (toTarget.magnitude <= stopDistance)
+            {
+                return;
+            }
+        }
+        movementDirection.Normalize();
+
+        Quaternion targetRotation =
+            Quaternion.LookRotation(movementDirection, Vector3.up);
+
+        Quaternion nextRotation = Quaternion.Slerp(
+            rigidBody.rotation,
+            targetRotation,
+            turnSpeed * Time.fixedDeltaTime);
+
+        rigidBody.MoveRotation(nextRotation);
+        rigidBody.linearVelocity = movementDirection * moveSpeed;
+
     }
 
     private void Update()
     {
-        // TODO: Draw a magenta line to ResponseTarget when it is not null.
+        if (context.ResponseTarget != null)
+        {
+            Debug.DrawLine(transform.position, context.ResponseTarget.position, Color.magenta);
+        }
     }
     #endregion
 
@@ -54,35 +105,45 @@ public abstract class AgentResponseController : MonoBehaviour
 
     protected Vector3 GetDirectionTo(Transform target)
     {
-        // TODO: Return the horizontal direction toward target.
-
-        return Vector3.zero;
+        if (target == null)
+        {
+            return Vector3.zero;
+        }
+        Vector3 direction = target.position - rigidBody.position;
+        direction.y = 0f;
+        return direction;
+        
     }
 
     protected Vector3 GetDirectionAwayFrom(Transform target)
     {
-        // TODO: Return the horizontal direction away from target.
+        if (target == null)
+        {
+            return Vector3.zero;
+        }
+        Vector3 direction = rigidBody.position - target.position;
+        direction.y = 0f;
+        return direction;
 
-        return Vector3.zero;
     }
 
     protected bool HasRecentPerception()
     {
-        // TODO: Check LastPerceivedObject and memoryDuration.
-
-        return false;
+        return context.LastPerceivedObject != null &&
+            Time.time - context.LastPerceivedTime <= memoryDuration;
     }
 
     protected Vector3 GetDirectionToLastPerceivedPosition()
     {
-        // TODO: Return the horizontal direction to LastPerceivedPosition.
-
-        return Vector3.zero;
+        Vector3 direction = context.LastPerceivedPosition - rigidBody.position;
+        direction.y = 0f;
+        return direction;
     }
 
     protected void SetResponseTarget(Transform target)
     {
-        // TODO: Store ResponseTarget and HasResponseTarget.
+        context.ResponseTarget = target;
+        context.HasResponseTarget = target != null;
     }
     #endregion
 }

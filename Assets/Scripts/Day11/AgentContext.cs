@@ -27,10 +27,16 @@ public class AgentContext : MonoBehaviour
 
     public List<Transform> PerceivedObjects = new List<Transform>();
 
-    public Transform PerceivedAgent;
-    public Transform PerceivedPickup;
-    public Transform PerceivedTarget;
-    public Transform PerceivedHazard;
+    public Transform VisibleAgent;
+    public Transform VisiblePickup;
+    public Transform VisibleTarget;
+    public Transform VisibleHazard;
+    public bool HasKey;
+    public bool HasResponseTarget;
+    public Transform ResponseTarget;
+    public Transform LastPerceivedObject;
+    public Vector3 LastPerceivedPosition;
+    public float LastPerceivedTime;
 
     #endregion
 
@@ -59,10 +65,10 @@ public class AgentContext : MonoBehaviour
     public void ClearPerception()
     {
         PerceivedObjects.Clear();
-        PerceivedAgent = null;
-        PerceivedPickup = null;
-        PerceivedTarget = null;
-        PerceivedHazard = null;
+        VisibleAgent = null;
+        VisiblePickup = null;
+        VisibleTarget = null;
+        VisibleHazard = null;
     }
 
     public void AddPerceivedObject(Transform perceived)
@@ -74,21 +80,25 @@ public class AgentContext : MonoBehaviour
 
         PerceivedObjects.Add(perceived);
 
+        LastPerceivedObject = perceived;
+        LastPerceivedPosition = perceived.position;
+        LastPerceivedTime = Time.time;
+
         if (perceived.CompareTag("Player") || perceived.CompareTag("AIAgent"))
         {
-            PerceivedAgent = perceived;
+            VisibleAgent = perceived;
         }
         else if (perceived.CompareTag("Key") || perceived.CompareTag("Powerup"))
         {
-            PerceivedPickup = perceived;
+            VisiblePickup = perceived;
         }
         else if (perceived.CompareTag("Chest"))
         {
-            PerceivedTarget = perceived;
+            VisibleTarget = perceived;
         }
         else if (perceived.CompareTag("Hazard"))
         {
-            PerceivedHazard = perceived;
+            VisibleHazard = perceived;
         }
     }
 
