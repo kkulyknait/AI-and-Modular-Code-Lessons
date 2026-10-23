@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
+      propertyPath: m_TagString
+      value: Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63,6 +67,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6446396366201554152}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5951053166053544094}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8904369728722870284}
   m_SourcePrefab: {fileID: 100100000, guid: a047e7ede420f4a47a761f480a4de97b, type: 3}
 --- !u!1 &9068095082440570248 stripped
 GameObject:
@@ -90,3 +100,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &5951053166053544094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068095082440570248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c27c7f19cc5834380d29a71e81a4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyPickup
+--- !u!114 &8904369728722870284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068095082440570248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d02ff5276a01a4186c438bcfbd25cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntermediateKeyPickup

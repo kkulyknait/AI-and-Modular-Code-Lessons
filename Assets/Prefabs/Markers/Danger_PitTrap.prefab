@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7337719183545448791}
-  m_Layer: 0
+  - component: {fileID: 2471197725238955988}
+  m_Layer: 9
   m_Name: Danger_PitTrap
-  m_TagString: Untagged
+  m_TagString: Pit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,6 +41,27 @@ Transform:
   - {fileID: 4386800121130526758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2471197725238955988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846892618247873272}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0886846, y: 1.5820997, z: 1.0437844}
+  m_Center: {x: 0.7298846, y: 0.29104996, z: -0.6636256}
 --- !u!1001 &533080057924000189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51,6 +73,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -92,7 +118,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -113,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -154,7 +185,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -175,6 +207,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -216,7 +252,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -278,6 +315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 9066091512600694510, guid: e26680100d6796846a542900d91354a0, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -299,6 +340,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -340,7 +385,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -361,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -402,7 +452,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -423,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,7 +519,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -485,6 +541,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -526,7 +586,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -547,6 +608,10 @@ PrefabInstance:
     - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_Name
       value: Dirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083834505607433933, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8891332769795708023, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -588,7 +653,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5341645393080776704, guid: 1464209a4253489418c2bd495bfd8c5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
