@@ -46,12 +46,16 @@ public class IntermediateAvoidanceSensor : MonoBehaviour
         context.ClearAvailableDirections();
 
         // Test the forward direction.
+        AddDirectionIfAvailable(transform.forward);
 
         // Test the right direction.
+        AddDirectionIfAvailable(transform.right);
 
         // Test the backward direction.
+        AddDirectionIfAvailable(-transform.forward);
 
         // Test the left direction.
+        AddDirectionIfAvailable(-transform.right);
     }
 
     #endregion

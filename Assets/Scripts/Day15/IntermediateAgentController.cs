@@ -153,19 +153,64 @@ public abstract class IntermediateAgentController : MonoBehaviour
     protected Vector3 SelectBestAvailableDirection(Vector3 desiredDirection, bool canReverse)
     {
         // Handle the case where no directions are available.
+        if(context.AvailableDirections.Count == 0)
+        {
+            context.ClearCommittedDirection();
+            return Vector3.zero;
+        }
 
         // Normalize the desired direction before comparing alignments.
+        Vector3 normalizedDesiredDirection = desiredDirection.normalized;
 
         // Keep the committed direction while it remains available and useful.
-
+        if (context.HasCommittedDirection 
+            && IsDirectionAvailable(context.CurrentDirection))
+        {
+            float committedAlignment = Vector3.Dot(
+                context.CurrentDirection, normalizedDesiredDirection);
+            if (committedAlignment >= 0f)
+            {
+                return context.CurrentDirection;
+            }
+        }
         // Track the best normal candidate.
+        Vector3 bestDirection = Vector3.zero;
+        float bestAlignment = float.NegativeInfinity;
 
         // Compare each direction with the desired direction.
-
+        foreach (Vector3 candidateDirection in context.AvailableDirections)
+        {
+            if (!canReverse && IsReverseDirection(candidateDirection))
+            {
+                continue;
+            }
+            float alignment = Vector3.Dot(
+                candidateDirection.normalized, normalizedDesiredDirection);
+            if (alignment <= bestAlignment)
+            {
+                continue;
+            }
+            bestAlignment = alignment;
+            bestDirection = candidateDirection.normalized;
+        }
         // Permit reversal when no normal candidate is available.
-
+        if (bestDirection.sqrMagnitude <= 0f)
+        {
+            foreach (Vector3 candidateDirection in context.AvailableDirections)
+                {
+                float alignment = Vector3.Dot(
+                    candidateDirection.normalized, normalizedDesiredDirection);
+                if(alignment <= bestAlignment)
+                {
+                    continue;
+                }
+                bestAlignment = alignment;
+                bestDirection = candidateDirection.normalized;
+            }
+        }
         // Commit to the selected direction.
-        return Vector3.zero;
+        context.SetCommittedDirection(bestDirection);
+        return bestDirection;
     }
 
     /// <summary>
@@ -175,15 +220,36 @@ public abstract class IntermediateAgentController : MonoBehaviour
     protected Vector3 GetWanderDirection()
     {
         // Keep the committed wander direction while it remains available.
-
+        if (context.HasCommittedDirection && IsDirectionAvailable(context.CurrentDirection))
+        {
+            return context.CurrentDirection;
+        }
         // Stop when no directions are available.
-
+        if (context.AvailableDirections.Count == 0)
+        {
+            context.ClearCommittedDirection();
+            return Vector3.zero;
+        }
         // Build a list that excludes immediate reversal.
-
+        List<Vector3> wanderDirections = new List<Vector3>();
+        foreach (Vector3 availableDirection in context.AvailableDirections)
+        {
+            if(IsReverseDirection(availableDirection))
+            {
+                continue;
+            }
+            wanderDirections.Add(availableDirection);
+        }
         // Permit reversal when the agent reaches a dead end.
-
+        if (wanderDirections.Count == 0)
+        {
+            wanderDirections.AddRange(context.AvailableDirections);
+        }
         // Select and commit a random direction.
-        return Vector3.zero;
+        int randomIndex = Random.Range(0, wanderDirections.Count);
+        Vector3 wanderDirection = wanderDirections[randomIndex].normalized;
+        context.SetCommittedDirection(wanderDirection);
+        return wanderDirection;
     }
 
     #endregion
