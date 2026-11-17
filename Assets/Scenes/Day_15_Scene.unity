@@ -1831,27 +1831,24 @@ MonoBehaviour:
   IsNearObstacle: 0
   IsNearHazard: 0
   IsNearTarget: 0
-  CurrentDetection: 0
   IsAvoiding: 0
-  HasAgentTarget: 0
-  HasKey: 0
-  HasResponseTarget: 0
-  CanPerceiveAgent: 0
-  CanPerceivePickup: 0
-  CanPerceiveTarget: 0
-  CanPerceiveHazard: 0
+  IsThreatDetected: 0
   CurrentTarget: {fileID: 0}
-  CurrentAgentTarget: {fileID: 0}
+  CurrentDetection: 0
+  AvoidanceDirection: {x: 0, y: 0, z: 0}
+  ThreatDirection: {x: 0, y: 0, z: 0}
+  ThreatDistance: 0
+  PerceivedObjects: []
   VisibleAgent: {fileID: 0}
   VisiblePickup: {fileID: 0}
   VisibleTarget: {fileID: 0}
   VisibleHazard: {fileID: 0}
+  HasKey: 0
+  HasResponseTarget: 0
   ResponseTarget: {fileID: 0}
   LastPerceivedObject: {fileID: 0}
-  AvoidanceDirection: {x: 0, y: 0, z: 0}
   LastPerceivedPosition: {x: 0, y: 0, z: 0}
   LastPerceivedTime: 0
-  PerceivedObjects: []
 --- !u!54 &600547245
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1893,13 +1890,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PerceptionSensor
   perceptionRadius: 6
   fieldOfViewAngle: 90
-  eyeHeight: 0.1
+  eyeHeight: 0.5
   perceptionMask:
-    serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 0
   obstructionMask:
-    serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
 --- !u!114 &600547247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,13 +1907,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9196a32617aee84a93329e26edf1cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvoidanceSensor
-  detectionDistance: 0.25
-  sensorRadius: 0.4
+  detectionDistance: 2
   sensorHeight: 0.5
+  avoidanceDistance: 1.5
+  sensorRadius: 0.4
   avoidanceMask:
-    serializedVersion: 2
-    m_Bits: 1536
-  canCrossPits: 0
+    m_Bits: 0
+  holdTime: 0.3
 --- !u!114 &600547249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2304,7 +2299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntermediateAvoidanceSensor
   detectionDistance: 0.15
-  sensorRadius: 0.4
+  sensorRadius: 0.26
   sensorHeight: 0.5
   blockingMask:
     serializedVersion: 2
@@ -2324,7 +2319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntermediateAgentContext
   knownCoinLocations:
   - {fileID: 5744453690975887890}
-  - {fileID: 1269647420}
+  - {fileID: 0}
   - {fileID: 440420881}
   - {fileID: 1560509762}
   HasKey: 0
@@ -3638,68 +3633,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8919599145817791894, guid: 41cddbaae8a3db64b8eb4183f0d5124b, type: 3}
   m_PrefabInstance: {fileID: 588730882}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1269647419
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9101707050220687572, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-      propertyPath: m_Name
-      value: Pickup_Coin (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
---- !u!4 &1269647420 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6239724446012250299, guid: 3d53d9e89e4c3a944ab0f5ea498b308f, type: 3}
-  m_PrefabInstance: {fileID: 1269647419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299364668
 PrefabInstance:
@@ -5893,7 +5826,6 @@ SceneRoots:
   - {fileID: 2132752326}
   - {fileID: 289759749}
   - {fileID: 5744453690975887889}
-  - {fileID: 1269647419}
   - {fileID: 440420880}
   - {fileID: 1560509761}
   - {fileID: 709406073}

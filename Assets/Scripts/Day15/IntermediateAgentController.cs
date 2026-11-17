@@ -46,6 +46,7 @@ public abstract class IntermediateAgentController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        rigidBody.linearVelocity = Vector3.zero;
         context.ResponseTarget = null;
 
         Vector3 desiredDirection = GetDesiredDirection();
@@ -273,8 +274,9 @@ public abstract class IntermediateAgentController : MonoBehaviour
     /// <param name="movementDirection">The selected movement direction.</param>
     private void MoveAgent(Vector3 movementDirection)
     {
-        Vector3 nextPosition = rigidBody.position + movementDirection * moveSpeed * Time.fixedDeltaTime;
-        rigidBody.MovePosition(nextPosition);
+        rigidBody.linearVelocity = movementDirection * moveSpeed;
+        //Vector3 nextPosition = rigidBody.position + movementDirection * moveSpeed * Time.fixedDeltaTime;
+        //rigidBody.MovePosition(nextPosition);
     }
 
     /// <summary>
@@ -288,7 +290,7 @@ public abstract class IntermediateAgentController : MonoBehaviour
         {
             float alignment = Vector3.Dot(availableDirection.normalized, direction.normalized);
 
-            if (alignment > 0.99f)
+            if (alignment > 0.7f)
             {
                 return true;
             }
