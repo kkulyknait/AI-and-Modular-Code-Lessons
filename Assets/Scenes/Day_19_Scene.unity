@@ -425,11 +425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5e7bb1898404a49a50eaa7d0e593a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Day19_GridMap
-  width: 10
-  height: 7
+  width: 20
+  height: 20
   cellSize: 1
   startCoordinate: {x: 1, y: 1}
-  goalCoordinate: {x: 8, y: 5}
+  goalCoordinate: {x: 13, y: 4}
   blockedCoordinates:
   - {x: 4, y: 1}
   - {x: 4, y: 2}

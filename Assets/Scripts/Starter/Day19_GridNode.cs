@@ -36,8 +36,7 @@ public class Day19_GridNode
     /// </summary>
     public void CalculateFCost()
     {
-        // TODO 1: Calculate F from G and H.
-        FCost = 0;
+        FCost = GCost + HCost;
     }
 
     /// <summary>
