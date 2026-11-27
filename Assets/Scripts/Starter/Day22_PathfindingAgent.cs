@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Day22_AgentContext))]
@@ -50,6 +51,8 @@ public class Day22_PathfindingAgent : MonoBehaviour
     private void Start()
     {
         // Request the first path from the Human to the Chest.
+        RequestPath();
+
     }
 
     /// <summary>
@@ -58,20 +61,50 @@ public class Day22_PathfindingAgent : MonoBehaviour
     private void FixedUpdate()
     {
         // Sense before deciding how to move.
+        contextSensor.RefreshAvailableDirections();
 
         // Request another path when the Chest enters a different Goal node.
+        if (pathGrid.GoalNode != context.PreviousGoalNode)
+        {
+            RequestPath();
+        }
 
         // Stop when no usable path exists.
-
+        if (context.CurrentPath.Count == 0 || context.CurrentPathIndex >= 
+            context.CurrentPath.Count)
+        {
+            return;
+        }
         // Advance after reaching the current path node.
-
+        Day22_GridNode currentPathNode = context.CurrentPath[context.CurrentPathIndex];
+        Vector3 directionToNode = currentPathNode.WorldPosition - rigidBody.position;
+        directionToNode.y = 0f;
+        if (directionToNode.magnitude <= nodeReachDistance)
+        {
+            context.CurrentPathIndex++;
+            context.ClearCommittedDirection();
+        }
         // Stop after reaching the end of the path.
+        if (context.CurrentPathIndex >= context.CurrentPath.Count)
+        {
+            return;
+        }
 
         // Calculate the desired direction toward the current path node.
+        currentPathNode = context.CurrentPath[context.CurrentPathIndex];
+        Vector3 desiredDirection = currentPathNode.WorldPosition - rigidBody.position;
+        desiredDirection.y = 0f;
 
         // Select the available local direction that best supports the path.
-
+        Vector3 movementDirection = SelectBestAvailableDirection(desiredDirection);
+        if(movementDirection.sqrMagnitude <= 0f)
+        {
+            return;
+        }
         // Rotate and move the Human.
+        RotateAgent(movementDirection);
+        MoveAgent(movementDirection);
+
     }
 
     #endregion
@@ -84,6 +117,8 @@ public class Day22_PathfindingAgent : MonoBehaviour
     private void RequestPath()
     {
         // Run A* and store the generated path in the agent context.
+        List<Day22_GridNode> path = pathGrid.RunSearch();
+        context.SetPath(path, pathGrid.GoalNode);
     }
 
     /// <summary>
@@ -92,15 +127,58 @@ public class Day22_PathfindingAgent : MonoBehaviour
     private Vector3 SelectBestAvailableDirection(Vector3 desiredDirection)
     {
         // Stop when no local directions are available.
+        if (context.AvailableDirections.Count == 0)
+        {
+            context.ClearAvailableDirections();
+            return Vector3.zero;
+        }
+        Vector3 normalizedDesiredDirection = desiredDirection.normalized;
 
         // Keep a useful committed direction.
+        if(context.HasCommittedDirection && IsDirectionAvailable(context.CurrentDirection))
+        {
+            if (Vector3.Dot(context.CurrentDirection, normalizedDesiredDirection) > 0.5f) 
+            {
+                return context.CurrentDirection;
+            }
+        }
+        Vector3 bestDirection = Vector3.zero;
+        float bestAlignment = float.NegativeInfinity;
 
         // Compare each available direction against the desired path direction.
-
+        foreach (Vector3 candidateDirection in context.AvailableDirections)
+        {
+            if(IsReverseDirection(candidateDirection))
+            {
+                continue;
+            }
+            float alignment = Vector3.Dot(candidateDirection.normalized,
+                normalizedDesiredDirection);
+            if (alignment <= bestAlignment)
+            {
+                continue;
+            }
+            bestAlignment = alignment;
+            bestDirection = candidateDirection.normalized;
+        }
         // Permit reversal when no other direction is available.
-
+        if(bestDirection.sqrMagnitude <= 0f)
+        {
+            foreach (Vector3 canadidateDirection in context.AvailableDirections)
+            {
+                float alignment = Vector3.Dot(canadidateDirection.normalized,
+                    normalizedDesiredDirection);
+                if (alignment <= bestAlignment)
+                {
+                    continue;
+                }
+                bestAlignment = alignment;
+                bestDirection = canadidateDirection.normalized;
+            }
+        }
         // Commit to the selected direction.
-        return Vector3.zero;
+        context.SetCommittedDirection(bestDirection);
+        return bestDirection;
     }
 
     private bool IsDirectionAvailable(Vector3 direction)

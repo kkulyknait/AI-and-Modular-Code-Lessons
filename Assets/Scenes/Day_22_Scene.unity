@@ -7937,7 +7937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b21a9d29d9ed84b81027e96729ca81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Day22_ContextSensor
-  detectionDistance: 0.4
+  detectionDistance: 0.2
   sensorRadius: 0.2
   sensorHeight: 0.5
   blockingMask:
@@ -18145,7 +18145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6178543680306292977, guid: 7044eee8c92598c439ad1d523c9290c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.6
+      value: 6.99
       objectReference: {fileID: 0}
     - target: {fileID: 6178543680306292977, guid: 7044eee8c92598c439ad1d523c9290c5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18181,7 +18181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8785509431316852152, guid: 7044eee8c92598c439ad1d523c9290c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
